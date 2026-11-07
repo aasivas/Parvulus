@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parvulus: A 10M-Scale World Action Model for Robot Manipulation</title>
+  <meta name="description" content="Parvulus is an ultra-efficient 10M-parameter Flow Matching World Action Model (WAM) for continuous robot manipulation.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+
+  <!-- Hero / Header Section -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="venue-badge">
+        <svg style="width:16px;height:16px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2zm-8.8 5L12 3.82 20.8 7 12 10.18 3.2 7zM4 10.5v6.27L12 21.2l8-4.43V10.5l-8 4.43-8-4.43z"/>
+        </svg>
+        <span>
+          <a href="https://actiongapworkshop.github.io/" target="_blank" rel="noopener noreferrer">CoRL 2026 Workshop on The Action Gap: Large Generative Models Learn Rich Knowledge</a>
+        </span>
+        <a href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/TAG" target="_blank" rel="noopener noreferrer" class="venue-tag" title="View Workshop on OpenReview">
+          OpenReview TAG &rarr;
+        </a>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="title-accent">Parvulus:</span> A 10M-Scale World Action Model<br>for Robot Manipulation
+      </h1>
+
+      <div class="authors-list">
+        <span class="author-item">
+          <a href="https://orcid.org/0000-0002-5263-1889" target="_blank" rel="noopener noreferrer" title="ORCID: 0000-0002-5263-1889">
+            Abdullah Ali Sivas
+            <svg style="width:14px;height:14px;vertical-align:-1px;margin-left:2px;" viewBox="0 0 256 256">
+              <path fill="#A6CE39" d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
+              <path fill="#FFF" d="M86.3 186.2H70.9V79.1h15.4v107.1zm41.1-70.8c23.5 0 35.8 14.8 35.8 35.5 0 21.6-13.6 35.3-35.8 35.3h-22V115.4h22zm-6.6 57.6h6.6c13.7 0 20.4-8.8 20.4-22.1 0-12.8-6.6-21.9-20.4-21.9h-6.6v44zm5.8-77.8c-5.8 0-10.2-4.4-10.2-10.2s4.4-10.2 10.2-10.2 10.2 4.4 10.2 10.2-4.4 10.2-10.2 10.2z"/>
+            </svg>
+          </a>
+        </span>
+        <span class="author-item">Peter Cho-Ho Lam</span>
+        <span class="author-item">Zirui Zhou</span>
+        <span class="author-item">Yong Zhang</span>
+      </div>
+
+      <!-- Action Link Buttons -->
+      <div class="buttons-group">
+        <!-- OpenReview Paper Link -->
+        <a href="https://openreview.net/forum?id=VcS0dE1Aoz" target="_blank" rel="noopener noreferrer" class="action-btn btn-openreview">
+          <!-- Document Icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+          </svg>
+          <span>OpenReview Paper</span>
+        </a>
+
+        <!-- GitHub Repo Link -->
+        <a href="https://github.com/aasivas/Parvulus" target="_blank" rel="noopener noreferrer" class="action-btn">
+          <!-- GitHub Icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>GitHub Code</span>
+        </a>
+
+        <!-- Hugging Face Model Link -->
+        <a href="https://huggingface.co/aasivas/Parvulus" target="_blank" rel="noopener noreferrer" class="action-btn btn-hf">
+          <!-- Hugging Face 🤗 Silhouette Icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 2.85 1.2 5.42 3.12 7.24.47.45 1.13.56 1.71.27.58-.29.89-.92.74-1.54-.42-1.74-.2-3.13.62-4.04.6-.66 1.48-.99 2.53-.99s1.93.33 2.53.99c.82.91 1.04 2.3.62 4.04-.15.62.16 1.25.74 1.54.58.29 1.24.18 1.71-.27C20.8 17.42 22 14.85 22 12c0-5.52-4.48-10-10-10zm-3.5 9c-.83 0-1.5-.67-1.5-1.5S7.67 8 8.5 8s1.5.67 1.5 1.5S9.33 11 8.5 11zm7 0c-.83 0-1.5-.67-1.5-1.5S14.67 8 15.5 8s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+          </svg>
+          <span>Hugging Face Models</span>
+          <span class="badge-tag">safetensors</span>
+        </a>
+
+        <!-- arXiv Stub Button -->
+        <a href="#citation" class="action-btn btn-stub" title="Technical Report coming soon on arXiv">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+          </svg>
+          <span>arXiv Report</span>
+          <span class="badge-tag">Coming Soon</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">9.98M</div>
+          <div class="stat-label">Policy Parameters (~20 MB BF16)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">90.88%</div>
+          <div class="stat-label">Average Success (LIBERO 40 Tasks)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7.28 ms</div>
+          <div class="stat-label">Inference Latency (>1,000 Hz Bandwidth)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100&times;</div>
+          <div class="stat-label">Smaller Than 3B-7B Parameter VLAs</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Abstract Section -->
+  <section class="section" id="abstract">
+    <div class="container">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        Vision-based robot manipulation increasingly relies on multi-billion parameter Vision-Language-Action (VLA) models and World Action Models (WAMs). However, standard imitation learning utilizes network capacity inefficiently, relying on parameter scaling to compensate for missing physical inductive biases. In this work, we show that latent physical grounding and structured data engineering significantly improve policy representation learning. Auxiliary generative decoders ground internal representations in spatial geometry and physical dynamics during training, then detach entirely at inference. Trained from scratch on the modest LIBERO demonstration corpus, our 9.9M parameter policy, <strong>Parvulus</strong>, achieves a <strong>90&ndash;92% success rate</strong> at <strong>&gt;100&nbsp;Hz</strong> (&lt;10&nbsp;ms latency). By matching models over 100&times; larger, Parvulus advances the Pareto frontier of parameter efficiency among language-conditioned policies. These findings demonstrate that latent physical grounding provides a far more efficient foundation for physical reasoning than uninformed parameter scaling.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pareto Frontier Section -->
+  <section class="section section-alt" id="pareto">
+    <div class="container">
+      <h2 class="section-title">Advancing the Pareto Frontier</h2>
+      <p style="margin-top: 12px; color: var(--text-muted); font-size: 1.05rem;">
+        Parvulus matches or exceeds multi-billion parameter architectures (3B&ndash;7B VLAs and WAMs) on the canonical 40-task LIBERO benchmark while demanding a fraction of the compute and memory footprint.
+      </p>
+
+      <div class="figure-wrapper">
+        <img src="static/images/libero_landscape.png" alt="LIBERO Benchmark Landscape comparing Parvulus with larger models" class="figure-img">
+        <div class="figure-caption">
+          <strong>Figure 1: Success Rate vs. Policy Parameter Scale on the LIBERO Benchmark.</strong>
+          Parvulus (9.98M params, 90.88% average success) matches and outperforms policies scaling into billions of parameters, operating comfortably at real-time control frequencies on edge and workstation hardware.
+        </div>
+      </div>
+
+      <!-- Benchmark Summary Table -->
+      <div class="table-container">
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Benchmark Suite</th>
+              <th>Canonical Tasks</th>
+              <th>Physical Rollouts</th>
+              <th>Success Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>LIBERO-Spatial</strong></td>
+              <td>10</td>
+              <td>1,500</td>
+              <td><strong>92.67%</strong></td>
+            </tr>
+            <tr>
+              <td><strong>LIBERO-Object</strong></td>
+              <td>10</td>
+              <td>1,500</td>
+              <td><strong>91.13%</strong></td>
+            </tr>
+            <tr>
+              <td><strong>LIBERO-Goal</strong></td>
+              <td>10</td>
+              <td>1,500</td>
+              <td><strong>89.47%</strong></td>
+            </tr>
+            <tr>
+              <td><strong>LIBERO-10 (Long-Horizon)</strong></td>
+              <td>10</td>
+              <td>1,500</td>
+              <td><strong>90.27%</strong></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Full LIBERO-40 Benchmark</strong></td>
+              <td><strong>40</strong></td>
+              <td><strong>6,000</strong></td>
+              <td><strong>90.88% &plusmn; 0.37%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture & Method -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <h2 class="section-title">Latent Physical Grounding & Architecture</h2>
+      <p style="margin-top: 12px; color: var(--text-muted); font-size: 1.05rem;">
+        Rather than relying on massive parameter scaling to absorb physics incidentally, Parvulus trains under multi-task auxiliary generative objectives that detach entirely at inference.
+      </p>
+
+      <div class="figure-wrapper">
+        <img src="static/images/model_architecture_and_decoders.png" alt="Parvulus Architecture and Auxiliary Decoders" class="figure-img">
+        <div class="figure-caption">
+          <strong>Figure 2: Architecture and Latent Physical Grounding.</strong>
+          (a) DualView perception backbone with cross-view attention and Flow Matching action decoder.
+          (b) Auxiliary generative decoders: dynamic frame differencing isolates motion causality; video flow predicts forward transitions; self-reconstruction regularizes spatial scene geometry. All auxiliary heads detach cleanly at inference time.
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3>
+            <span class="feature-icon">&Delta;</span>
+            Dynamic Frame Differencing
+          </h3>
+          <p>
+            Isolates coordinated motion between the robot end-effector and manipulated target objects, discouraging shortcut representations based on static background artifacts.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>
+            <span class="feature-icon">&rArr;</span>
+            Forward Video Flow Decoders
+          </h3>
+          <p>
+            Enforces temporal and physical causality by predicting imagined next observation frames, equipping the latent representation with predictive world-model dynamics.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>
+            <span class="feature-icon">&#x29C9;</span>
+            Zero-Overhead Test-Time Inference
+          </h3>
+          <p>
+            Auxiliary decoders detach completely once training converges. The deployed policy retains full physical grounding with only 9.98M active parameters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment Runtimes -->
+  <section class="section section-alt" id="deployment">
+    <div class="container">
+      <h2 class="section-title">High-Speed Execution Modes</h2>
+      <p style="margin-top: 12px; color: var(--text-muted); font-size: 1.05rem;">
+        Parvulus supports multiple execution runtimes tailored from embedded edge robotics to high-throughput cloud evaluation.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3>Standalone C++ / CUDA</h3>
+          <p>
+            <strong>7.28 ms / chunk</strong> (&gt;1,000 Hz action bandwidth). Standalone dependency-free engine natively conditioned on 256-dim continuous task vectors via cuBLAS and fused kernels.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>PyTorch with KV-Caching</h3>
+          <p>
+            <strong>38.8 ms / chunk</strong> (206 Hz action bandwidth). Turnkey Python interface with receding horizon action chunking and multi-worker asynchronous stepping.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>Intel Iris Xe / Arc Hybrid</h3>
+          <p>
+            <strong>106.6 ms / chunk</strong>. Heterogeneous execution executing DualView vision encoding on integrated graphics (<code style="font-family:var(--font-mono); font-size:0.85rem;">torch.xpu</code>) and ODE flow matching on CPU.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quickstart -->
+  <section class="section" id="quickstart">
+    <div class="container">
+      <h2 class="section-title">Quickstart</h2>
+      <p style="margin-top: 12px; color: var(--text-muted); font-size: 1.05rem;">
+        Get started with Parvulus in just a few lines of Python:
+      </p>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span>Python (Inference)</span>
+          <button class="copy-btn" onclick="copyCode('code-sample')">
+            <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+            <span id="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre><code id="code-sample">import numpy as np
+from PIL import Image
+from infer import ParvulusInference
+
+# Initialize client (auto-detects CUDA / XPU / CPU; enables fast KV-cache)
+infer = ParvulusInference.from_pretrained(
+    "aasivas/Parvulus",
+    device="cuda",      # Options: 'cuda', 'cpu', 'xpu', 'hybrid', or 'auto'
+    use_kv_cache=True,  
+)
+
+# Predict 8-step continuous action chunk [8, 7]
+action_chunk = infer.predict_chunk(
+    agentview_image=agentview_frame,
+    wristview_image=wristview_frame,
+    task_description="grasp the black bowl and place it on the plate"
+)</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation Section -->
+  <section class="section section-alt" id="citation">
+    <div class="container">
+      <h2 class="section-title">Citation</h2>
+      <p style="margin-top: 12px; color: var(--text-muted); font-size: 1.05rem;">
+        If you find Parvulus useful for your research or applications, please cite our paper:
+      </p>
+
+      <div class="code-container bibtex-wrapper">
+        <div class="code-header">
+          <span>BibTeX</span>
+          <button class="copy-btn" onclick="copyCode('bibtex-code')">
+            <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+            <span id="copy-bib-text">Copy BibTeX</span>
+          </button>
+        </div>
+        <pre><code id="bibtex-code">@inproceedings{sivas2026parvulus,
+  title     = {Parvulus: A 10M-Scale World Action Model for Robot Manipulation},
+  author    = {Abdullah Ali Sivas and Peter Cho-Ho Lam and Zirui Zhou and Yong Zhang},
+  booktitle = {CoRL 2026 Workshop on The Action Gap: Large Generative Models Learn Rich Knowledge},
+  year      = {2026},
+  url       = {https://openreview.net/forum?id=VcS0dE1Aoz}
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        <strong>Parvulus</strong> &bull; Released under the Apache 2.0 License.
+      </p>
+      <p style="margin-top: 6px;">
+        Hosted on GitHub Pages &bull; Explore source code on <a href="https://github.com/aasivas/Parvulus" target="_blank" rel="noopener noreferrer">GitHub</a> &bull; Model weights on <a href="https://huggingface.co/aasivas/Parvulus" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function copyCode(elementId) {
+      const codeElement = document.getElementById(elementId);
+      const text = codeElement.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btnText = elementId === 'bibtex-code' ? document.getElementById('copy-bib-text') : document.getElementById('copy-text');
+        const original = btnText.innerText;
+        btnText.innerText = 'Copied!';
+        setTimeout(() => {
+          btnText.innerText = original;
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
